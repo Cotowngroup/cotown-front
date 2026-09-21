@@ -46,6 +46,7 @@ export class ReportsComponent {
     { name: 'mf',                cotown: true,  provider: true,  icon: 'euro_symbol',        filter: true,  text: 'Management Fee' },
     { name: 'descuentos',        cotown: true,  provider: false, icon: 'local_play',         filter: true,  text: 'Descuentos' },
     { name: 'contratos',         cotown: true,  provider: false, icon: 'playlist_add_check', filter: true,  text: 'Contratos' },
+    { name: 'incasol',           cotown: true,  provider: false, icon: 'savings',            filter: true,  text: 'Incasol (altas y bajas)' },
     { name: 'forecast',          cotown: true,  provider: false, icon: 'query_stats',        filter: true,  text: 'Plantilla Forecast' },
     { name: 'stabilised',        cotown: true,  provider: false, icon: 'query_stats',        filter: false, text: 'Plantilla Stabilised' },
     { name: 'nra',               cotown: true,  provider: false, icon: 'toc',                filter: true,  text: 'Datos formato N2' },
@@ -131,7 +132,7 @@ export class ReportsComponent {
       if (!this.dateRangeControl.value.start || !this.dateRangeControl.value.end || 
           this.providerControl.value == null || this.providerControl.value < 0)
         return true
-    } else if (data == "contratos") {
+    } else if (data == "contratos" || data == "incasol") {
       if (!this.dateRangeControl.value.start || !this.dateRangeControl.value.end)
         return true
     } else if (data == "downloadfacturas") {
@@ -163,7 +164,7 @@ export class ReportsComponent {
       + '&access_token=' + token;
 
     // Reservas y contratos
-    } else if (data == "descuentos" || data == "disponibilidad" || data == "occupancy" || data == "reservas" || data == "bookdocs" || data == "marketplaces" || data == "pagosrecibidos" || data == "contratos" || data == "forecast") {
+    } else if (data == "descuentos" || data == "disponibilidad" || data == "occupancy" || data == "reservas" || data == "bookdocs" || data == "marketplaces" || data == "pagosrecibidos" || data == "contratos" || data == "incasol" || data == "forecast") {
       const from = moment(this.dateRangeControl.value.start);
       const to = moment(this.dateRangeControl.value.end).add(1,'d');
       l = environment.backURL + '/export/' + data
