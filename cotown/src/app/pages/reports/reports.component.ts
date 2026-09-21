@@ -46,7 +46,7 @@ export class ReportsComponent {
     { name: 'mf',                cotown: true,  provider: true,  icon: 'euro_symbol',        filter: true,  text: 'Management Fee' },
     { name: 'descuentos',        cotown: true,  provider: false, icon: 'local_play',         filter: true,  text: 'Descuentos' },
     { name: 'contratos',         cotown: true,  provider: false, icon: 'playlist_add_check', filter: true,  text: 'Contratos' },
-    { name: 'incasol',           cotown: true,  provider: false, icon: 'savings',            filter: true,  text: 'Incasol (altas y bajas)' },
+    { name: 'incasol',           cotown: true,  provider: false, icon: 'savings',            filter: true,  text: 'Incàsol' },
     { name: 'forecast',          cotown: true,  provider: false, icon: 'query_stats',        filter: true,  text: 'Plantilla Forecast' },
     { name: 'stabilised',        cotown: true,  provider: false, icon: 'query_stats',        filter: false, text: 'Plantilla Stabilised' },
     { name: 'nra',               cotown: true,  provider: false, icon: 'toc',                filter: true,  text: 'Datos formato N2' },
