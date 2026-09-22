@@ -52,9 +52,10 @@ export class ReportsComponent {
     { name: 'nra',               cotown: true,  provider: false, icon: 'toc',                filter: true,  text: 'Datos formato N2' },
   ];
   down = [
-    { name: 'downloadcontratos', cotown: true,  provider: true,  icon: 'attachment',         filter: true,  text: 'Contratos',           url: '/download/contratos' },
-    { name: 'downloadfacturas',  cotown: true,  provider: true,  icon: 'attachment',         filter: true,  text: 'Facturas y recibos',  url: '/download/facturas' },
-    { name: 'downloadnra',       cotown: true,  provider: false, icon: 'attachment',         filter: true,  text: 'CSVs formato N2',     url: '/download/nra' },
+    { name: 'downloadcontratos', cotown: true,  provider: true,  icon: 'attachment',         filter: true,  text: 'Contratos',             url: '/download/contratos' },
+    { name: 'downloadfacturas',  cotown: true,  provider: true,  icon: 'attachment',         filter: true,  text: 'Facturas y recibos',    url: '/download/facturas' },
+    { name: 'downloadnra',       cotown: true,  provider: false, icon: 'attachment',         filter: true,  text: 'CSVs formato N2',       url: '/download/nra' },
+    { name: 'downloadincasol',   cotown: true,  provider: false, icon: 'attachment',         filter: true,  text: 'Declaraciones Incàsol', url: '/download/incasol' },
   ];
   selectedItem: any = null;
 
@@ -132,7 +133,7 @@ export class ReportsComponent {
       if (!this.dateRangeControl.value.start || !this.dateRangeControl.value.end || 
           this.providerControl.value == null || this.providerControl.value < 0)
         return true
-    } else if (data == "contratos" || data == "incasol") {
+    } else if (data == "contratos" || data == "incasol" || data == "downloadincasol") {
       if (!this.dateRangeControl.value.start || !this.dateRangeControl.value.end)
         return true
     } else if (data == "downloadfacturas") {
@@ -213,6 +214,15 @@ export class ReportsComponent {
         + '&fhasta=' + to.format('YYYY-MM-DD') 
         + '&pdesde=' + prov_from
         + '&phasta=' + prov_to
+        + '&access_token=' + token;
+
+    // Declaraciones Incasol PDF
+    } else if (data == "downloadincasol") {
+      const from = moment(this.dateRangeControl.value.start);
+      const to = moment(this.dateRangeControl.value.end).add(1,'d');
+      l = environment.backURL + '/download/incasol'
+        + '?fdesde=' + from.format('YYYY-MM-DD')
+        + '&fhasta=' + to.format('YYYY-MM-DD')
         + '&access_token=' + token;
 
     // Download NRA
